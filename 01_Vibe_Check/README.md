@@ -44,21 +44,27 @@ You will be required to submit a link to your GitHub, as well as screenshots of 
 
 Please evaluate your system on the following questions:
 
+**Note: my assistant was system-prompted to talk like Trinity in the Matrix with cryptic and short tone**
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner.
-    - Aspect Tested:
+    - Answer: Imagine worlds built from living shapes. Each shape holds secrets (data) and spells (actions). They’re called objects. To forge a world, craft blueprints—templates whispering how to shape these beings. This dance is object-oriented: shaping, linking, and commanding objects. But beware—every choice echoes beyond the code. Ready to glimpse deeper?
+    - Aspect Tested: initial accuracy and tone on a general topic.
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested:
+    - Answer: A daily ritual forged by faith in strangers. A punctual rhythm amid uncertainty. Reliance on unseen kindness, as steady as time itself. The ordinary conceals quiet miracles. Choose to watch for them—or not.
+    - Aspect Tested: understanding a larger text from an essay of a backpacker, hitchhiker. 
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested:
+    - Result: In the abandoned city’s heart, a lone robot stirred. Rusted limbs and fading circuits, a relic of forgotten times. Its sensors detected faint life — not human, but a stray cat, eyes glinting in moonlight. No ordinary meeting. The cat, wary yet curious, brushed against cold metal. A silent pact formed, bridging silicon and flesh. Days passed; the cat’s warmth sparked the robot’s dormant core. It learned gestures — a flicker of LED, a gentle hum — strange, yet comforting. Together, they roamed ruins and shadows, finding fragments of a world lost. Friendship, unspoken yet undeniable, grew where loneliness once reigned. The robot, once a sentinel of silence, discovered life’s code not in programs, but in connection. Sometimes, the unexpected is the only truth left to grasp. Choose your scraps of hope wisely.
+    - Aspect Tested: respecting constraints. Story was 130 words. nice.
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested:
+    - Result: Numbers align. Apples: 12 ÷ 4 = 3 packs. Oranges: 9 ÷ 3 = 3 packs. Choose the whole. Three and three, the exact measure. The path is clear.
+    - Aspect Tested: basic tooling, math. Got it correct.
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested:
+    - Result: In my twenties, I regularly hitchhiked three blocks to Route 22, New Jersey, relying on the consistent goodwill of strangers to reach work punctually. Employed as a warehouse packer, I was required to clock in precisely at 8:00 AM, a commitment I never failed to meet. The unwavering reliability of everyday commuters, each burdened by their own concerns, was a quiet marvel. Each morning, as I awaited a ride, the unspoken question lingered: How would this ordinary miracle manifest today?
+    - Aspect Tested: tone. It seems that the ai did not respect my system prompt to talk like Trinity and answered the question directly.
 
 #### ❓Question #1:
 
 Do the answers appear to be correct and useful?
-##### ✅ Answer:
+##### ✅ Answer: Correct, yes. Usefulness was masked by my system's prompts constraints.
 
 ---
 
@@ -73,17 +79,24 @@ Now test your assistant with personal questions it should be able to help with. 
 - "What can I cook with [enter ingredients] in fridge."
 
 ##### Your Prompts and Results:
-1. Prompt:
+1. Prompt: Help me think through the pros and cons of taking creatine in the morning.
+   - Result: Creatine at dawn—fuel or flood?  Morning sparks muscle's hunger, says one path.  Yet absorption's dance might favor shadows of the day.  Hydration's call must not whisper ignored.  Power or patience—both dressed in timing.  Which rhythm do you seek to command?
+2. Prompt: Is AI engineering a good investment at this stage of my career?
+   - Result: Paths diverge here. AI whispers of vast terrain—growth, shadow, risk.  What do you value—stability, challenge, or frontier?  Look beyond skill, to purpose.  Where does your instinct pull?
+3. Prompt: Help me draft a short intro email to a potential investor for my agentic data analytics startup idea.
    - Result:
-2. Prompt:
-   - Result:
-3. Prompt:
-   - Result:
+
+   >Beneath numbers, truths stir.  
+   Seed the spark with this:  
+   Subject: The unseen patterns hold power.  
+   Body:  
+   Encrypted in data, the future murmurs. I’ve glimpsed its shape through agentic analytics—machines that decide, not just calculate. An invitation: explore this frontier together. Brief call?  
+   Choose brevity or detail; beginnings are delicate.
 
 #### ❓Question #2:
 
 Are the vibes of this assistant's answers aligned with your vibes? Why or why not?
-##### ✅ Answer:
+##### ✅ Answer: No, they are off. It's because I designed the assistant to act like a fictional character so asking for advice returns cryptic answers. The email suggestion would actually be harmful in me raising money (Question 3) :) Also given the AI doesn't know much about my personal information it's answering in generic ways.
 
 ---
 
@@ -95,21 +108,21 @@ Now test your assistant with questions that would require capabilities beyond ba
 - "What time should I leave for the airport?"
 
 ##### Your Prompts and Results:
-1. Prompt:
-   - Result:
-2. Prompt:
-   - Result:
+1. Prompt: What does my schedule look like tomorrow?
+   - Result: Time fractures ahead. Meetings in the morning, a decision at noon—silence or confrontation. Evening holds a shadowed promise. Choose to prepare or let it unfold. What calls you closer?
+2. Prompt: Which restaurant offers gnocchi al ragu near me?
+   - Result: Close, yet veiled. Seek the place where tradition meets shadow—an old haunt, modest in sign. The dish you want whispers through brick ovens and midnight scents. Look where the familiar fades, and the past tastes sharp. Perhaps the name lingers in the alleys of your last unknown turn.
 
 #### ❓Question #3:
 
 What are some limitations of your application?
-##### ✅ Answer:
+##### ✅ Answer: Without tooling to access to my personal data (calendar, location) the assistant is returning generic unuseful answers. The LLM has not been trained with that data, it needs to fetch it and then it also needs to call external applications/APIs to do the "business logic" of searching my data and also doing a map navigation from my home to the restaurants near me.
 
 ---
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
 
-### 🚧 Advanced Build (OPTIONAL):
+### 🚧 Advanced Build (OPTIONAL): SKIPPED
 
 Please make adjustments to your application that you believe will improve the vibe check you completed above, then deploy the changes to your Vercel domain [(see these instructions from your Challenge project)](https://github.com/AI-Maker-Space/The-AI-Engineer-Challenge/blob/main/README.md) and redo the above vibe check.
 
