@@ -70,21 +70,23 @@ What is the key architectural difference between the `simple_agent` and `agent_w
 
 ##### Answer:
 
-
+The difference is that `agent_with_helpfulness` has a `helpfullness_node` that acts as an "llm judge". The judge checks (via its prompt) to see if an answer was helpful wrt the query asked. It's a very simple "yes", "no" answer. If the answer is not helpful then the agent will loop again and call any appropriate tools. Otherwise the agent will go to the end node. There is a safety guard on the helpfulness code to go to the END node after 10 iterations. Note that the main agent node is the same between the two agent implementations and there is no prompt describing any specific instructions about helpfullness or otherwise or how to deal with helpfulness feedback (i.e., whether to try different queries or ask the user for clarification etc.).
 
 #### Question 2:
 What is the role of `langgraph.json` in the LangGraph Deployments? Describe each of its key fields and how the platform uses this file to discover and serve your graphs.
 
 ##### Answer:
-
+Since Langsmith deployments does not expose the raw server side (e.g., FastAPI) we can't configure our app on which endpoint/route to bind an agent to. All of this is abstracted for us. As a result, there needs to be a convention between the developer and the platform on how to identify our agents so we can (automagically) serve them via a REST endpoint. For Langsmith to know how to wire everything up, it needs two pieces of information:
+1) Which agents we want to expose from our code base. This is the `graphs` section where we have an `agent_key` pointing to the actual python module (file path) and the variable in that module that keeps the compiled graph (e.g., `graph` at the end of the file). It's probably doing that by loading the module dynamically in the python runtime and then getting the `graph` attribute so it can then invoke it.
+2) For each exposed agent there is another entry under `assistants` where we expose some human readable description of each of the exposed agents so the studio UI can display it well. The `graph_id` is what links the description to the actual graph (e.g., `graph_id`=`simple_agent` matches the `simple_agent` entry under `graphs`.)
 
 
 #### Activity #1:
 Create your own agent graph! Build a new graph in `app/graphs/` with a custom evaluation node (e.g., a vibe checker, a fact verifier, a summarizer — get creative!). Register it in `langgraph.json`, serve it with `uv run langgraph dev`
 
 ##### Answer:
-
-
+Added a variant called `agent_with_conciseness` that checks if the response is more than two sentences long and returns a failure if not. 
+![LangSmith trace for agent_with_conciseness](agent_with_conciseness_langsmith.png)
 
 # Ship 🚢
 
