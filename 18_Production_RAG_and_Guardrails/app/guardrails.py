@@ -62,40 +62,42 @@ def create_guardrails_guard(
     guard = Guard()
 
     try:
+        validators = []
         # Topic restriction
         if valid_topics or invalid_topics:
-            guard = guard.use(
+            validators.append(
                 RestrictToTopic(
                     valid_topics=valid_topics or [],
                     invalid_topics=invalid_topics or [],
                     disable_classifier=True,
                     disable_llm=False,
-                    on_fail="exception"
+                    on_fail="noop"
                 )
             )
             logger.debug("Topic restriction guard configured")
 
         # Jailbreak detection
         if enable_jailbreak_detection:
-            guard = guard.use(DetectJailbreak())
+            validators.append(DetectJailbreak(on_fail="noop"))
             logger.debug("Jailbreak detection guard configured")
 
         # Profanity check
         if enable_profanity_check:
-            guard = guard.use(
+            validators.append(
                 ProfanityFree(
                     threshold=0.8,
                     validation_method="sentence",
-                    on_fail="exception"
+                    on_fail="noop"
                 )
             )
             logger.debug("Profanity check guard configured")
 
         # Competitor check (optional)
         if enable_competitor_check:
-            guard = guard.use(CompetitorCheck())
+            validators.append(CompetitorCheck(on_fail="noop"))
             logger.debug("Competitor check guard configured")
 
+        guard = guard.use(*validators)
         logger.info("Guardrails guard configured successfully")
         return guard
 
